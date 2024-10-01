@@ -3,7 +3,7 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Image from 'next/image'; // Import the Image component from Next.js
-import homeimage from "../assets/Home-image.png"; // Ensure this path is correct
+import homeimage from "@/public/images/Home-image.png"; // Ensure this path is correct
 
 function HomeImage() {
   return (

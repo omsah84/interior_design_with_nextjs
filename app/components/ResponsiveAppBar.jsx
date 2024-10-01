@@ -5,7 +5,6 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
@@ -13,8 +12,19 @@ import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import Link from 'next/link';
+import Image from 'next/image'; // To render images in Next.js
+import logo from "@/public/assets/logo.png";
 
-const pages = ['Interiors', 'Design Ideas', 'Magazine','Interiorcafe TV','Cities','Store Locator', 'More'];
+const pages = [
+  { name: 'Interiors', href: '/interiors' },
+  { name: 'Design Ideas', href: '/design-ideas' },
+  { name: 'Magazine', href: '/magazine' },
+  { name: 'Interiorcafe TV', href: '/interiorcafe-tv' },
+  { name: 'Cities', href: '/cities' },
+  { name: 'Store Locator', href: '/store-locator' },
+  { name: 'More', href: '/more' },
+];
 
 function ResponsiveAppBar() {
   const [drawerOpen, setDrawerOpen] = React.useState(false);
@@ -30,10 +40,13 @@ function ResponsiveAppBar() {
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
       <List>
         {pages.map((page) => (
-          <ListItem button key={page}>
-            <ListItemText primary={page} />
+          <ListItem key={page.name} component={Link} href={page.href} passHref>
+            <ListItemText
+              primaryTypographyProps={{ fontWeight: 'bold' }} // Making sidebar text bold
+              primary={page.name}
+            />
           </ListItem>
-        ))}  
+        ))}
       </List>
     </Box>
   );
@@ -50,43 +63,18 @@ function ResponsiveAppBar() {
           }}
         >
           {/* Logo for larger screens */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'black',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
+          <Box sx={{ mr: 2, display: { xs: 'none', md: 'flex' }, cursor: 'pointer' }}>
+            <Link href="/" passHref>
+              <Image src={logo} alt="LOGO" width={150} height={40} priority={true} />
+            </Link>
+          </Box>
 
           {/* Logo for smaller screens (on the left) */}
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: 'flex', md: 'none' },
-              flexGrow: 1,
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'black',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
+          <Box sx={{ mr: 2, display: { xs: 'flex', md: 'none' }, flexGrow: 1 }}>
+            <Link href="/" passHref>
+              <Image src={logo} alt="LOGO" width={120} height={30} priority={true} />
+            </Link>
+          </Box>
 
           {/* Responsive menu (hamburger) on the right */}
           <Box sx={{ display: { xs: 'flex', md: 'none' }, justifyContent: 'flex-end' }}>
@@ -102,8 +90,13 @@ function ResponsiveAppBar() {
           {/* Menu for larger screens */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent: 'flex-start' }}>
             {pages.map((page) => (
-              <Button key={page} onClick={toggleDrawer(false)} sx={{ my: 2, color: 'black', display: 'block' }}>
-                {page}
+              <Button
+                key={page.name}
+                component={Link}
+                href={page.href}
+                sx={{ my: 2, color: 'black', display: 'block', fontWeight: 'bold' }} // Making AppBar text bold
+              >
+                {page.name}
               </Button>
             ))}
           </Box>

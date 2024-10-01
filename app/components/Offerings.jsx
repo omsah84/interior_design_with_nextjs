@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image'; // Import Next.js Image component
 
 // Import images directly
-import image1 from "../assets/image1.jpg"; // Ensure the path is correct
+import image1 from "@/public/images/image1.jpg"; // Ensure the path is correct
 
 export default function Offerings() {
   const [hoverIndex, setHoverIndex] = useState(null);

@@ -1,7 +1,7 @@
 "use client"; // Makes the component client-side
 import { Box, Typography, Grid, Paper, Avatar } from '@mui/material';
 import Image from 'next/image'; // For the logo image
-import logo from '../assets/Home-image.png'; // Assuming this is the logo image path
+import logo from '@/public/images/Home-image.png'; // Assuming this is the logo image path
 
 export default function Testimonials() {
   return (

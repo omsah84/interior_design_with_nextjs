@@ -6,7 +6,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 
 // Import the logo image (replace with your path)
-import logo from '../assets/Home-image.png';
+import logo from '@/public/images/Home-image.png'
 
 export default function Footer() {
   return (

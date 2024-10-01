@@ -1,19 +1,9 @@
-import localFont from "next/font/local";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+
 import ResponsiveAppBar from "./components/ResponsiveAppBar";
 import Footer from "./components/Footer";
 import FloatingButtons from "./components/FloatingButtons";
 import "./globals.css";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata = {
   title: "Create Next App",
@@ -23,11 +13,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ResponsiveAppBar />
-        {children}
-        <Footer />
-        <FloatingButtons/>
+      <body>
+        <AppRouterCacheProvider>
+          <ResponsiveAppBar />
+          {/* {children} */}
+          {/* <Footer /> */}
+          {/* <FloatingButtons /> */}
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
