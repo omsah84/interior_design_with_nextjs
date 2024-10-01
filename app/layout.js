@@ -1,4 +1,7 @@
 import localFont from "next/font/local";
+import ResponsiveAppBar from "./components/ResponsiveAppBar";
+import Footer from "./components/Footer";
+import FloatingButtons from "./components/FloatingButtons";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -21,7 +24,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <ResponsiveAppBar />
         {children}
+        <Footer />
+        <FloatingButtons/>
       </body>
     </html>
   );
