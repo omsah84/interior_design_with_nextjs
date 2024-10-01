@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
       <body>
         <AppRouterCacheProvider>
           <ResponsiveAppBar />
-          {/* {children} */}
+          {children}
           {/* <Footer /> */}
           {/* <FloatingButtons /> */}
         </AppRouterCacheProvider>
