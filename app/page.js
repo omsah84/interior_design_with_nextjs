@@ -6,6 +6,8 @@ import TrustFactorSection from"./components/TrustFactorSection";
 import InteriorCafeProcess from "./components/InteriorCafeProcess";
 import InteriorDesignGrid from "./components/InteriorDesignGrid";
 
+export const runtime = 'edge';
+
 export default function Home() {
   return (
     <>
