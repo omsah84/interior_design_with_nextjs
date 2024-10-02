@@ -14,9 +14,9 @@ export default function Home() {
       <HomeImage />
       <Offerings />
       <InteriorDesignGrid />
+      <TrustFactorSection />
       {/* <Testimonial /> */}
       {/* <OngoingProjects /> */}
-      {/* <TrustFactorSection /> */}
       {/* <InteriorCafeProcess /> */}
     </>
   );

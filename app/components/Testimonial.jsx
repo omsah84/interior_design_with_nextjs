@@ -5,8 +5,8 @@ import logo from '@/public/images/Home-image.png'; // Assuming this is the logo 
 
 export default function Testimonials() {
   return (
-    <Box sx={{ padding: '40px', width: '100%' }}>
-      <Typography variant="h4" align="center" sx={{ mb: 4 }}>
+    <Box sx={{ paddingTop: '5px', paddingBottom:"20px", width: '100%' }}>
+      <Typography variant="h5" align="center" sx={{ mb: 4 }}>
         See What Our Customers Are Saying
       </Typography>
 
