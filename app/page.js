@@ -12,12 +12,12 @@ export default function Home() {
   return (
     <>
       <HomeImage />
-      {/* <Offerings /> */}
-      {/* <Testimonial /> */}
-      {/* <OngoingProjects /> */}
-      {/* <InteriorDesignGrid /> */}
-      {/* <TrustFactorSection /> */}
-      {/* <InteriorCafeProcess /> */}
+      <Offerings />
+      <Testimonial />
+      <OngoingProjects />
+      <InteriorDesignGrid />
+      <TrustFactorSection />
+      <InteriorCafeProcess />
     </>
   );
 }
