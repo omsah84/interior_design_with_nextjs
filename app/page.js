@@ -13,9 +13,9 @@ export default function Home() {
     <>
       <HomeImage />
       <Offerings />
+      <InteriorDesignGrid />
       {/* <Testimonial /> */}
       {/* <OngoingProjects /> */}
-      {/* <InteriorDesignGrid /> */}
       {/* <TrustFactorSection /> */}
       {/* <InteriorCafeProcess /> */}
     </>
