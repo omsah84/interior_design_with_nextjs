@@ -12,10 +12,10 @@ export default function Home() {
       <HomeImage />
       {/* <Offerings /> */}
       {/* <Testimonial /> */}
-      {/* <OngoingProjects />
-      <InteriorDesignGrid />
-      <TrustFactorSection />
-      <InteriorCafeProcess /> */}
+      {/* <OngoingProjects /> */}
+      {/* <InteriorDesignGrid /> */}
+      {/* <TrustFactorSection /> */}
+      {/* <InteriorCafeProcess /> */}
     </>
   );
 }
