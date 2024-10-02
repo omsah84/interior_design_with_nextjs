@@ -15,7 +15,7 @@ const InteriorDesignGrid = () => {
       </Typography>
 
       {/* Flexbox Layout */}
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: .5, justifyContent: 'center', paddingBottom:"30px" }}>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: .5, justifyContent: 'center', paddingBottom:"0px" }}>
         {/* Row 1 */}
         <Box 
           component="img"

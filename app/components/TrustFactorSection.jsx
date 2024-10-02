@@ -32,12 +32,12 @@ const trustFactors = [
 
 const TrustFactorSection = () => {
   return (
-    <Box sx={{ padding: '20px' }}>
+    <Box sx={{ paddingTop: '20px', paddingBottom:"30px" }}>
       {/* Section Title */}
       <Typography 
         variant="h5" 
         align="center" 
-        sx={{ marginBottom: '2rem' }}
+        sx={{ marginBottom: '1rem' }}
       >
         Your Trust Factor
       </Typography>
@@ -82,6 +82,11 @@ const TrustFactorSection = () => {
               '@media (max-width: 600px)': {
                 flex: '1 1 100%', // 1 item per row for extra small screens
                 margin: '10px 0',
+                // maxWidth: 'none', // Ensure full width on small screens
+              },
+              '@media (max-width: 400px)': {
+                flex: '1 1 100%', // 1 item per row for extra small screens
+                margin: '10px 20px',
                 maxWidth: 'none', // Ensure full width on small screens
               },
             }}
