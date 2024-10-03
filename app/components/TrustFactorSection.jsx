@@ -1,56 +1,56 @@
-import React from 'react';
-import { Typography, Box, CardMedia } from '@mui/material';
+import React from "react";
+import { Typography, Box } from "@mui/material";
+import Image from "next/image";
+import happyHomeIcon from "@/public/assets/happyHomeIcon.png"; // Ensure this path is correct
+import citiesIcon from "@/public/assets/citiesIcon.png";
+import countryIcon from "@/public/assets/countryIcon.png";
+import productIcon from "@/public/assets/productIcon.png";
+import designerIcon from "@/public/assets/designerIcon.png";
 
 // Trust Factor Data
 const trustFactors = [
   {
     id: 1,
-    icon: 'https://via.placeholder.com/50',  // Replace with actual icon/image URLs
-    label: '100,000+ happy homes',
+    icon: happyHomeIcon,
+    label: "100,000+ happy homes",
   },
   {
     id: 2,
-    icon: 'https://via.placeholder.com/50',
-    label: '60+ cities',
+    icon: citiesIcon,
+    label: "60+ cities",
   },
   {
     id: 3,
-    icon: 'https://via.placeholder.com/50',
-    label: '3 countries',
+    icon: countryIcon,
+    label: "3 countries",
   },
   {
     id: 4,
-    icon: 'https://via.placeholder.com/50',
-    label: '20 lakh+ catalogue products',
+    icon:  productIcon,
+    label: "20 lakh+ catalogue products",
   },
   {
     id: 5,
-    icon: 'https://via.placeholder.com/50',
-    label: '3,500+ designers',
+    icon: designerIcon,
+    label: "3,500+ designers",
   },
 ];
 
 const TrustFactorSection = () => {
   return (
-    <Box sx={{ paddingTop: '20px', paddingBottom:"30px" }}>
-      {/* Section Title */}
-      <Typography 
-        variant="h5" 
-        align="center" 
-        sx={{ marginBottom: '1rem' }}
-      >
+    <Box sx={{ paddingTop: "20px", paddingBottom: "30px" }}>
+      <Typography variant="h5" align="center" sx={{ marginBottom: "1rem" }}>
         Your Trust Factor
       </Typography>
 
-      {/* Trust Factor Flexbox Layout */}
       <Box
         sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-between', // Ensures icons fill all space on large screens
-          gap: 2, // Adds spacing between items
-          '@media (max-width: 900px)': {
-            justifyContent: 'center', // Center items on smaller screens
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
+          gap: 2,
+          "@media (max-width: 900px)": {
+            justifyContent: "center",
           },
         }}
       >
@@ -58,49 +58,49 @@ const TrustFactorSection = () => {
           <Box
             key={factor.id}
             sx={{
-              flex: '1 1 calc(20% - 16px)', // 5 items per row for large screens
-              maxWidth: 'calc(20% - 16px)',
-              minWidth: '180px', // Minimum width to maintain box size on smaller screens
-              display: 'flex', 
-              flexDirection: 'column', 
-              alignItems: 'center', 
-              backgroundColor: '#fff', 
-              padding: '1rem', 
-              borderRadius: '8px',
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)', // Box shadow effect
-              transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
-              '&:hover': {
-                transform: 'scale(1.05)', // Zoom effect on hover
-                boxShadow: '0 8px 16px rgba(0, 0, 0, 0.2)', // Enhanced shadow on hover
+              flex: "1 1 calc(20% - 16px)",
+              maxWidth: "calc(20% - 16px)",
+              minWidth: "180px",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              backgroundColor: "#fff",
+              padding: "1rem",
+              borderRadius: "8px",
+              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
+              transition:
+                "transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out",
+              "&:hover": {
+                transform: "scale(1.05)",
+                boxShadow: "0 8px 16px rgba(0, 0, 0, 0.2)",
               },
-              '@media (max-width: 1200px)': {
-                flex: '1 1 calc(25% - 16px)', // 4 items per row for medium screens
+              "@media (max-width: 1200px)": {
+                flex: "1 1 calc(25% - 16px)",
               },
-              '@media (max-width: 900px)': {
-                flex: '1 1 calc(33.33% - 16px)', // 3 items per row for small screens
+              "@media (max-width: 900px)": {
+                flex: "1 1 calc(33.33% - 16px)",
               },
-              '@media (max-width: 600px)': {
-                flex: '1 1 100%', // 1 item per row for extra small screens
-                margin: '10px 0',
-                // maxWidth: 'none', // Ensure full width on small screens
+              "@media (max-width: 600px)": {
+                flex: "1 1 100%",
+                margin: "10px 0",
               },
-              '@media (max-width: 400px)': {
-                flex: '1 1 100%', // 1 item per row for extra small screens
-                margin: '10px 20px',
-                maxWidth: 'none', // Ensure full width on small screens
+              "@media (max-width: 400px)": {
+                flex: "1 1 100%",
+                margin: "10px 20px",
+                maxWidth: "none",
               },
             }}
           >
-            {/* Icon */}
-            <CardMedia
-              component="img"
-              image={factor.icon}  // Replace with actual icon
+            {/* Image using Next.js Image component */}
+            <Image
+              src={factor.icon} // Ensure this points to a valid image URL
               alt={factor.label}
-              sx={{ width: '80px', height: '80px', marginBottom: '1rem' }}
+              width={80} // Set width
+              height={80} // Set height
+              style={{ marginBottom: "1rem" }} // Apply margin via style
             />
-            
-            {/* Label */}
-            <Typography variant="body1" align="center" sx={{ fontWeight: '500' }}>
+
+            <Typography variant="body1" align="center" sx={{ fontWeight: "500" }}>
               {factor.label}
             </Typography>
           </Box>
