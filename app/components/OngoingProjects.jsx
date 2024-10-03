@@ -1,30 +1,32 @@
 import React from 'react';
-import { Grid, Typography, Card, CardMedia, Box } from '@mui/material';
+import { Grid, Typography, Card, Box } from '@mui/material';
+import Image from 'next/image'; // Import the next/image component
+import image from "@/public/images/Home-image.png"; // Your local image import
 
 const ongoingProjects = [
   { 
     id: 1, 
     title: 'Project 1', 
     price: '15 lakhs', 
-    img: 'https://via.placeholder.com/300'  // Replace with your image URLs
+    img: image  // Local image
   },
   { 
     id: 2, 
     title: 'Project 2', 
     price: '12 lakhs', 
-    img: 'https://via.placeholder.com/300'
+    img: image // External image
   },
   { 
     id: 3, 
     title: 'Project 3', 
     price: '18 lakhs', 
-    img: 'https://via.placeholder.com/300'
+    img: image // External image
   },
   { 
     id: 4, 
     title: 'Project 4', 
     price: '20 lakhs', 
-    img: 'https://via.placeholder.com/300'
+    img: image // External image
   }
 ];
 
@@ -33,10 +35,11 @@ const OngoingProjects = () => {
     <Box sx={{ padding: '2rem', backgroundColor: '#f9f9f9' }}>
       {/* Title */}
       <Typography 
-        variant="h4" 
+        variant="h5" 
         align="center" 
         gutterBottom 
-        sx={{ marginBottom: '2rem', fontWeight: 'bold' }}>
+        sx={{ marginBottom: '2rem' }}
+      >
         Ongoing Projects
       </Typography>
 
@@ -54,13 +57,15 @@ const OngoingProjects = () => {
                 }
               }}
             >
-              {/* Project Image */}
-              <CardMedia 
-                component="img" 
-                image={project.img} 
-                alt={project.title} 
-                height="200" 
-              />
+              {/* Project Image using next/image */}
+              <Box sx={{ position: 'relative', height: '200px' }}>
+                <Image
+                  src={project.img}
+                  alt={project.title}
+                  layout="fill" // Use fill to make it responsive
+                  objectFit="cover" // Cover to maintain aspect ratio
+                />
+              </Box>
 
               {/* Hover Content (Title and Price) */}
               <Box
