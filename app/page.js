@@ -25,6 +25,8 @@ import { diningroomsliders } from "./data/DiningRoom.js";
 export const runtime = "edge";
 
 function DesignComponent() {
+
+  
   return (
     <>
       <HomeOffice
@@ -37,15 +39,15 @@ function DesignComponent() {
         heading="Living Room to Match Every Style"
         subheading="Discover elegant and cozy designs for your gathering spaces."
       />
-      <BedRoom
-        slides={bedroomsliders}
-        heading="Bedroom to Match Every Style"
-        subheading="Create your serene retreat with our stylish bedroom designs."
-      />
       <Kitchen
         slides={kitchensliders}
         heading="Kitchen to Match Every Style"
         subheading="Transform your culinary space with modern and functional designs."
+      />
+      <BedRoom
+        slides={bedroomsliders}
+        heading="Bedroom to Match Every Style"
+        subheading="Create your serene retreat with our stylish bedroom designs."
       />
       <DiningRoom
         slides={diningroomsliders}

@@ -1,26 +1,25 @@
 // src/homeOfficeSlides.js
-import industrialhomeoffice from "@/public/images/Industrial Home Office.jpg";
-import modernminimalisthomeoffice from "@/public/images/Modern Minimalist Home Office.jpg";
-import rustichomeoffice from "@/public/images/Rustic Home Office.jpg";
-import scandinavisanhomeoffice from "@/public/images/Scandinavian Home Office.jpg";
-import techsavvyhomeoffice from "@/public/images/Tech-Savvy Home Office.jpg";
-import traditionalhomeoffice from "@/public/images/Traditional Home Office.jpg";
-import royal from "@/public/images/Royal.jpg";
-import Classic from "@/public/images/Classic Indian Bedroom.jpg";
-import Contemporary from "@/public/images/Contemporary & Classy 4 BHK.jpg";
-import Monochromatic from "@/public/images/Monochromatic Grey 2 BHK.jpg";
-import bohemainhomeoffice from "@/public/images/Bohemian Home Office.jpg";
-import contemporaryhomeoffice from "@/public/images/Contemporary & Classy 4 BHK.jpg";
-import creativestudiohomeoffice from "@/public/images/Creative Studio Home Office.jpg";
-import ecofriendlyhomeoffice from "@/public/images/Eco-Friendly Home Office.jpg";
-
+import industrialhomeoffice from "../assets/Industrial Home Office.jpg";
+import modernminimalisthomeoffice from "../assets/Modern Minimalist Home Office.jpg";
+import rustichomeoffice from "../assets/Rustic Home Office.jpg";
+import scandinavisanhomeoffice from "../assets/Scandinavian Home Office.jpg";
+import techsavvyhomeoffice from "../assets/Tech-Savvy Home Office.jpg";
+import traditionalhomeoffice from "../assets/Traditional Home Office.jpg";
+import royal from "../assets/Royal.jpg";
+import Classic from "../assets/Classic Indian Bedroom.jpg";
+import Contemporary from "../assets/Contemporary & Classy 4 BHK.jpg";
+import Monochromatic from "../assets/Monochromatic Grey 2 BHK.jpg";
+import bohemainhomeoffice from "../assets/Bohemian Home Office.jpg";
+import contemporaryhomeoffice from "../assets/Contemporary & Classy 4 BHK.jpg";
+import creativestudiohomeoffice from "../assets/Creative Studio Home Office.jpg";
+import ecofriendlyhomeoffice from "../assets/Eco-Friendly Home Office.jpg";
 
 export const bedroomsliders = [
-  // {
-  //   image: industrialhomeoffice,
-  //   title: "Industrial Home Office",
-  //   description: "Exposed brick, metal accents, and dark tones create a raw, industrial atmosphere for a modern and edgy workspace.",
-  // },
+  {
+    image: industrialhomeoffice,
+    title: "Industrial Home Office",
+    description: "Exposed brick, metal accents, and dark tones create a raw, industrial atmosphere for a modern and edgy workspace.",
+  },
   // {
   //   image: modernminimalisthomeoffice,
   //   title: "Modern Minimalist Home Office",
@@ -31,31 +30,31 @@ export const bedroomsliders = [
   //   title: "Rustic Home Office",
   //   description: "Warm wood tones and vintage decor bring a cozy, earthy charm to your workspace, perfect for creating a relaxing environment.",
   // },
-  {
-    image: scandinavisanhomeoffice,
-    title: "Scandinavian Home Office",
-    description: "Light wood, natural light, and minimalist furniture create a clean and functional space with a touch of Nordic elegance.",
-  },
+  // {
+  //   image: scandinavisanhomeoffice,
+  //   title: "Scandinavian Home Office",
+  //   description: "Light wood, natural light, and minimalist furniture create a clean and functional space with a touch of Nordic elegance.",
+  // },
   {
     image: traditionalhomeoffice,
     title: "Traditional Home Office",
     description: "Timeless and elegant, with classic wooden furniture and intricate details, this office exudes professionalism and sophistication.",
   },
-  // {
-  //   image: techsavvyhomeoffice,
-  //   title: "Tech-Savvy Home Office",
-  //   description: "Seamlessly integrate the latest gadgets and technology into your workspace, providing a modern and efficient working environment.",
-  // },
-  // {
-  //   image: royal,
-  //   title: "Royal & Elegant 3 BHK",
-  //   description: "Embrace regal elegance with luxurious finishes and rich textures, perfect for adding sophistication to any home office.",
-  // },
-  // {
-  //   image: Monochromatic,
-  //   title: "Monochromatic Grey 2 BHK",
-  //   description: "A calm, monochromatic palette of grey hues creates a serene and professional atmosphere for focused productivity.",
-  // },
+  {
+    image: techsavvyhomeoffice,
+    title: "Tech-Savvy Home Office",
+    description: "Seamlessly integrate the latest gadgets and technology into your workspace, providing a modern and efficient working environment.",
+  },
+  {
+    image: royal,  // Removed curly braces
+    title: "Royal & Elegant 3 BHK",
+    description: "Embrace regal elegance with luxurious finishes and rich textures, perfect for adding sophistication to any home office.",
+  },
+  {
+    image: Monochromatic,
+    title: "Monochromatic Grey 2 BHK",
+    description: "A calm, monochromatic palette of grey hues creates a serene and professional atmosphere for focused productivity.",
+  },
   {
     image: Contemporary,
     title: "Contemporary & Classy 4 BHK",

@@ -25,7 +25,7 @@ const SlideContainer = styled(Box)({
   height: "100%",
 });
 
-const SlideImage = styled("img")({
+const SlideImage = styled(Image)({
   width: "250px",
   height: "250px",
   borderRadius: "25px",
@@ -81,7 +81,12 @@ const SliderFormater = ({ slides, heading, subheading }) => {
       <Slider {...settings}>
         {slides.map((slide, index) => (
           <SlideContainer key={index}>
-            <SlideImage src={slide.image} alt={slide.title} />
+            <SlideImage
+              src={slide.image.src}
+              alt={slide.title}
+              width={250}
+              height={250}
+            />
             <SlideTitle>{slide.title}</SlideTitle>
             <SlideDescription>{slide.description}</SlideDescription>
             <ActionButton variant="contained">GET FREE QUOTE</ActionButton>
@@ -92,13 +97,10 @@ const SliderFormater = ({ slides, heading, subheading }) => {
   );
 };
 
-export default SliderFormater;
-
-// // Define prop types for HomeStyle
 SliderFormater.propTypes = {
   slides: PropTypes.arrayOf(
     PropTypes.shape({
-      image: PropTypes.string.isRequired,
+      image: PropTypes.object.isRequired, // Use object since we are using Next.js Image
       title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
     })
@@ -106,3 +108,5 @@ SliderFormater.propTypes = {
   heading: PropTypes.string.isRequired,
   subheading: PropTypes.string.isRequired,
 };
+
+export default SliderFormater;

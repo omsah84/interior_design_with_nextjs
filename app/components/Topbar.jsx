@@ -61,7 +61,7 @@ export default function Topbar() {
         <ContentContainer>
           <Content className="mobile" variant="body1" color="white">
             <Email />
-            email@gmail.com
+            support@interiorcafe.com
           </Content>
         </ContentContainer>
       </SubContainer>
