@@ -75,7 +75,7 @@ const SliderFormater = ({ slides, heading, subheading }) => {
   };
 
   return (
-    <BannerContainer>
+    <BannerContainer id="design-ideas">
       <Heading>{heading}</Heading>
       <Typography>{subheading}</Typography>
       <Slider {...settings}>

@@ -17,13 +17,13 @@ import Image from 'next/image'; // To render images in Next.js
 import logo from "@/public/assets/logo.png";
 
 const pages = [
-  { name: 'Interiors', href: '/interiors' },
-  { name: 'Design Ideas', href: '/design-ideas' },
-  { name: 'Magazine', href: '/magazine' },
-  { name: 'Interiorcafe TV', href: '/interiorcafe-tv' },
-  { name: 'Cities', href: '/cities' },
-  { name: 'Store Locator', href: '/store-locator' },
-  { name: 'More', href: '/more' },
+  { name: 'Interiors', href: '#interiors' },
+  { name: 'Design Ideas', href: '#design-ideas' },
+  // { name: 'Magazine', href: '/magazine' },
+  // { name: 'Interiorcafe TV', href: '/interiorcafe-tv' },
+  { name: 'Cities', href: '#cities' },
+  // { name: 'Store Locator', href: '/store-locator' },
+  { name: 'More', href: '#design-ideas' },
 ];
 
 function ResponsiveAppBar() {
@@ -37,7 +37,7 @@ function ResponsiveAppBar() {
   };
 
   const renderSidebar = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
+    <Box  sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
       <List>
         {pages.map((page) => (
           <ListItem key={page.name} component={Link} href={page.href} passHref>

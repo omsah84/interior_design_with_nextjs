@@ -1,6 +1,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --transition-duration: 0.3s; /* Transition duration for smooth effects */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,36 +17,55 @@ body {
 }
 
 body {
-  color                  : var(--foreground);
-  background             : var(--background);
-  font-family            : Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing : antialiased;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  transition: background var(--transition-duration), color var(--transition-duration); /* Smooth transition for background and text color */
 }
 
 * {
   box-sizing: border-box;
-  padding   : 0;
-  margin    : 0;
+  padding: 0;
+  margin: 0;
 }
 
-.container{
-  padding: .1em 4em;
-  width:100%;
+.container {
+  padding: 1em 4em; /* Increased padding for better spacing */
+  width: 100%;
   position: relative;
   z-index: 2;
- 
-  /* border: 3px solid red; */
+  transition: padding var(--transition-duration); /* Smooth transition for padding */
 }
 
+/* Smooth transitions for hover effects */
+button, a {
+  transition: background var(--transition-duration), color var(--transition-duration);
+}
 
+/* Responsive styles */
 @media only screen and (max-width: 700px) {
   .mobile {
     display: none !important;
   }
 }
+
 @media only screen and (max-width: 1000px) {
   .tablet {
     display: none !important;
   }
+}
+
+/* Example of hover effects for buttons and links */
+button:hover,
+a:hover {
+  background: rgba(255, 0, 0, 0.1); /* Light background on hover */
+  color: var(--foreground); /* Change text color on hover */
+}
+
+/* Smooth scroll for anchor links */
+html {
+  scroll-behavior: smooth;
 }

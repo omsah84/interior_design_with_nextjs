@@ -3,7 +3,7 @@ import { Typography, Box } from '@mui/material';
 
 const InteriorDesignGrid = () => {
   return (
-    <div>
+    <div id='interiors'>
       {/* Header Text */}
       <Typography 
         variant="h5" 

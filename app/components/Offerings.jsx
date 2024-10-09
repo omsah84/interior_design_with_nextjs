@@ -45,7 +45,7 @@ export default function Offerings() {
   };
 
   return (
-    <div>
+    <div id="cities">
       <Typography variant="h5" align="center" paddingTop={3}  gutterBottom>
         Your Ultimate Destination for Modern Interior Design
       </Typography>
