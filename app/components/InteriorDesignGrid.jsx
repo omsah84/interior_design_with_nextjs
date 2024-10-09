@@ -33,7 +33,7 @@ const InteriorDesignGrid = () => {
         {/* Row 2 */}
         <Box 
           component="img"
-          src="/images/homeimg0.jpg" // Replace with the actual image
+          src="/images/Classic Indian Bedroom.jpg" // Replace with the actual image
           alt="Dining Room"
           sx={{ flex: '1 1 calc(33.33% - 16px)', maxWidth: 'calc(33.33% - 16px)', height: 'auto' }} // Adjust for three columns
         />
