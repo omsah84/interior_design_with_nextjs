@@ -23,7 +23,7 @@ const FloatingButtons = () => {
       <Fab
         color="primary"
         aria-label="WhatsApp"
-        onClick={() => window.open('https://wa.me/918986983491', '_blank')} // WhatsApp link with the specified number
+        onClick={() => window.open('https://wa.me/917975230478', '_blank')} // WhatsApp link with the specified number
         sx={{
           width: 56, // Width of the square button
           height: 56, // Height of the square button
@@ -37,7 +37,7 @@ const FloatingButtons = () => {
       <Fab
         color="secondary"
         aria-label="Phone"
-        onClick={() => window.location.href = 'tel:+918986983491'} // Phone link with the specified number
+        onClick={() => window.location.href = 'tel:+917975230478'} // Phone link with the specified number
         sx={{
           width: 56, // Width of the square button
           height: 56, // Height of the square button

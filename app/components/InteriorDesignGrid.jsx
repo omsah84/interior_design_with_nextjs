@@ -25,7 +25,7 @@ const InteriorDesignGrid = () => {
         />
         <Box 
           component="img"
-          src="/images/image1.jpg" // Replace with the actual image
+          src="/images/Royal.jpg" // Replace with the actual image
           alt="Master Bedroom"
           sx={{ flex: '1 1 calc(50% - 16px)', maxWidth: 'calc(50% - 16px)', height: 'auto' }}
         />
@@ -33,19 +33,19 @@ const InteriorDesignGrid = () => {
         {/* Row 2 */}
         <Box 
           component="img"
-          src="/images/image1.jpg" // Replace with the actual image
+          src="/images/homeimg0.jpg" // Replace with the actual image
           alt="Dining Room"
           sx={{ flex: '1 1 calc(33.33% - 16px)', maxWidth: 'calc(33.33% - 16px)', height: 'auto' }} // Adjust for three columns
         />
         <Box 
           component="img"
-          src="/images/image1.jpg" // Replace with the actual image
+          src="/images/Eco-Friendly Home Office.jpg" // Replace with the actual image
           alt="Kitchen"
           sx={{ flex: '1 1 calc(33.33% - 16px)', maxWidth: 'calc(33.33% - 16px)', height: 'auto' }}
         />
         <Box 
           component="img"
-          src="/images/image1.jpg" // Replace with the actual image
+          src="/images/Modern Living Room.jpg" // Replace with the actual image
           alt="False Ceiling"
           sx={{ flex: '1 1 calc(33.33% - 16px)', maxWidth: 'calc(33.33% - 16px)', height: 'auto' }}
         />

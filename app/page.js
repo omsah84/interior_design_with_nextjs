@@ -15,8 +15,8 @@ export default function Home() {
       <Offerings />
       <InteriorDesignGrid />
       <TrustFactorSection />
-      <Testimonial />
-      <OngoingProjects />
+      {/* <Testimonial /> */}
+      {/* <OngoingProjects /> */}
       <InteriorCafeProcess />
     </>
   );

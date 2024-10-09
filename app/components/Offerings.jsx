@@ -5,6 +5,10 @@ import Image from "next/image"; // Import Next.js Image component
 
 // Import images directly
 import image1 from "@/public/images/image1.jpg"; // Ensure the path is correct
+import modular from "@/public/images/Modern Living Room.jpg"; // Ensure the path is correct
+import home from "@/public/images/Contemporary Home Office.jpg"; // Ensure the path is correct
+import luxury from "@/public/images/Royal.jpg"; // Ensure the path is correct
+import Renovations from "@/public/images/Traditional Home Office.jpg"; // Ensure the path is correct
 
 export default function Offerings() {
   const [hoverIndex, setHoverIndex] = useState(null);
@@ -13,22 +17,22 @@ export default function Offerings() {
     {
       title: "Modular Interiors",
       description: "Functional kitchen, wardrobe and storage",
-      img: image1, // Use imported image directly
+      img: modular, // Use imported image directly
     },
     {
       title: "Full Home Interiors",
       description: "Turnkey interior solutions for your home",
-      img: image1,
+      img: home,
     },
     {
       title: "Luxury Interiors",
       description: "Tailored interiors that redefine elegance",
-      img: image1,
+      img: luxury,
     },
     {
       title: "Renovations",
       description: "Expert solutions to upgrade your home",
-      img: image1,
+      img: Renovations,
     },
   ];
 
