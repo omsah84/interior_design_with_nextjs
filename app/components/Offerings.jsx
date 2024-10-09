@@ -2,6 +2,8 @@
 import { Card, CardContent, Typography, Button, Box } from "@mui/material";
 import { useState } from "react";
 import Image from "next/image"; // Import Next.js Image component
+import { motion } from 'framer-motion';
+
 
 // Import images directly
 import image1 from "@/public/images/image1.jpg"; // Ensure the path is correct
@@ -12,6 +14,11 @@ import Renovations from "@/public/images/Traditional Home Office.jpg"; // Ensure
 
 export default function Offerings() {
   const [hoverIndex, setHoverIndex] = useState(null);
+
+  const variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   const offerings = [
     {
@@ -45,7 +52,7 @@ export default function Offerings() {
   };
 
   return (
-    <div id="cities">
+    <motion.div id="cities" initial="hidden" animate="visible"   exit="hidden" variants={variants} transition={{ duration: 0.2 }}>
       <Typography variant="h5" align="center" paddingTop={3}  gutterBottom>
         Your Ultimate Destination for Modern Interior Design
       </Typography>
@@ -131,6 +138,6 @@ export default function Offerings() {
           </Box>
         ))}
       </Box>
-    </div>
+    </motion.div>
   );
 }

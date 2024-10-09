@@ -68,10 +68,10 @@ export default function Home() {
     <>
       <HomeImage />
       <Offerings />
-      <HomeSpaceInterior />
       <InteriorDesignGrid />
       <TrustFactorSection />
       <DesignComponent />
+      <HomeSpaceInterior />
       <WhatWeOffer />
       {/* <Testimonial /> */}
       {/* <OngoingProjects /> */}
