@@ -15,6 +15,7 @@ import Kitchen from "./components/SliderFormater";
 import DiningRoom from "./components/SliderFormater";
 import OutdoorSpace from "./components/SliderFormater";
 
+
 import { homeofficesliders } from "./data/HomeOffice.js";
 import { livingroomsliders } from "./data/LivingRoom.js";
 import { kitchensliders } from "./data/Kitchen.js";
@@ -72,10 +73,11 @@ export default function Home() {
       <TrustFactorSection />
       <DesignComponent />
       <HomeSpaceInterior />
-      <WhatWeOffer />
+      {/* <WhatWeOffer /> */}
       {/* <Testimonial /> */}
       {/* <OngoingProjects /> */}
       <InteriorCafeProcess />
+      
     </>
   );
 }
