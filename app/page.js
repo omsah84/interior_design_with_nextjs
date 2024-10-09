@@ -22,6 +22,7 @@ import { kitchensliders } from "./data/Kitchen.js";
 import { outdoorspacesliders } from "./data/OutdoorSpace.js";
 import { bedroomsliders } from "./data/BedRoom.js";
 import { diningroomsliders } from "./data/DiningRoom.js";
+import ContactForm from "./components/Form1";
 
 export const runtime = "edge";
 
@@ -77,6 +78,7 @@ export default function Home() {
       {/* <Testimonial /> */}
       {/* <OngoingProjects /> */}
       <InteriorCafeProcess />
+      <ContactForm/>
       
     </>
   );
