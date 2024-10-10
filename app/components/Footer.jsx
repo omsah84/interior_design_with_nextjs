@@ -1,14 +1,25 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import { Typography, Box, Button, Stack, IconButton, Link } from "@mui/material";
 import Image from "next/image"; // For the logo image
 import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
+import ContactForm from "./ContactForm";
 
 // Import the logo image (replace with your path)
 import logo from "@/public/assets/logo.png";
 
 export default function Footer() {
+  const [showForm, setShowForm] = useState(false); // State to manage form visibility
+
+  const handleOpenForm = () => {
+    setShowForm(true); // Show the form when button is clicked
+  };
+
+  const handleCloseForm = () => {
+    setShowForm(false); // Hide the form
+  };
   return (
     <Box
       sx={{
@@ -101,10 +112,12 @@ export default function Footer() {
                 borderRadius: "50px",
                 // fontSize: {xs: '50px' }
               }}
+              onClick={handleOpenForm} // Open the form on button click
               endIcon={<span>›</span>}
             >
               BOOK NOW
             </Button>
+            <ContactForm isVisible={showForm} handleClose={handleCloseForm} />
           </Box>
         </Box>
       </Stack>

@@ -1,8 +1,8 @@
 'use client'
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { TextField, Button, Box, Grid, Typography } from '@mui/material';
 
-const PopUpForm = () => {
+const ContactForm = ({ isVisible, handleClose }) => {
   const scriptURL =
     "https://script.google.com/macros/s/AKfycbwWzuMEd4K5dxvjvAUHx58b_AuCn2MqjRGWDMphRij-V_IFGEFINBr_4VEt045pF-f2Jg/exec";
 
@@ -16,17 +16,6 @@ const PopUpForm = () => {
     email: "",
     mobile: ""
   });
-
-  const [isVisible, setIsVisible] = useState(false); // State for form visibility
-
-  // Show form after 10 seconds
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 10000); // 10 seconds delay
-
-    return () => clearTimeout(timer); // Cleanup timer on unmount
-  }, []);
 
   // Email validation regex
   const validateEmail = (email) => {
@@ -103,18 +92,13 @@ const PopUpForm = () => {
         });
         // Show success alert
         window.alert("Form submitted successfully!");
-        // Hide the form after successful submission
-        setIsVisible(false);
+        // Close the form after successful submission
+        handleClose();
       })
       .catch((error) => {
         console.error("Error!", error.message);
         window.alert("An error occurred while submitting the form.");
       });
-  };
-
-  // Handle form cancellation
-  const handleCancel = () => {
-    setIsVisible(false);
   };
 
   return isVisible ? (
@@ -127,24 +111,16 @@ const PopUpForm = () => {
         top: '50%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
-        width: { xs: '90%', sm: '80%', md: '50%', lg: '40%' },  // Larger width for large screens
-        maxWidth: '700px',  // Increase the max width for large screens
-        height: { xs: 'auto', lg: 'auto' },  // Auto height for large screens
+        width: { xs: '90%', sm: '80%', md: '50%', lg: '40%' },  
+        maxWidth: '700px',  
         backgroundColor: '#f5f5f5',
         borderRadius: 2,
         boxShadow: 3,
         padding: { xs: 2, sm: 3 },
         zIndex: 999,
-        maxHeight: { lg: '80vh' },  // Adjust max height for large screens
       }}
     >
-      {/* Title */}
-      <Typography 
-        variant="h4" 
-        component="h1" 
-        align="center" 
-        sx={{ marginBottom: 3 }}
-      >
+      <Typography variant="h4" component="h1" align="center" sx={{ marginBottom: 3 }}>
         Contact Us
       </Typography>
 
@@ -160,8 +136,8 @@ const PopUpForm = () => {
             onChange={handleChange}
             value={formData.email}
             variant="outlined"
-            error={!!errors.email}  // Shows error state if email is invalid
-            helperText={errors.email}  // Display error message
+            error={!!errors.email}
+            helperText={errors.email}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -188,35 +164,23 @@ const PopUpForm = () => {
             value={formData.mobile}
             variant="outlined"
             required
-            error={!!errors.mobile}  // Shows error state if mobile is invalid
-            helperText={errors.mobile}  // Display error message
+            error={!!errors.mobile}
+            helperText={errors.mobile}
           />
         </Grid>
         <Grid item xs={12}>
-          <Button 
-            fullWidth 
-            type="submit" 
-            variant="contained" 
-            color="primary"
-            sx={{ paddingY: 1.5 }} // Make the button taller
-          >
+          <Button fullWidth type="submit" variant="contained" color="primary" sx={{ paddingY: 1.5 }}>
             Send
           </Button>
         </Grid>
         <Grid item xs={12}>
-          <Button 
-            fullWidth 
-            variant="outlined" 
-            color="secondary" 
-            onClick={handleCancel}  // Hide form on cancel
-            sx={{ paddingY: 1.5 }}
-          >
+          <Button fullWidth variant="outlined" color="secondary" onClick={handleClose} sx={{ paddingY: 1.5 }}>
             Cancel
           </Button>
         </Grid>
       </Grid>
     </Box>
-  ) : null; // Hide form when not visible
+  ) : null;
 };
 
-export default PopUpForm;
+export default ContactForm;
