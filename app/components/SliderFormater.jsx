@@ -1,10 +1,11 @@
 "use client";
+import { useState, useEffect, useRef } from "react";
 import Slider from "react-slick";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, Dialog, DialogContent } from "@mui/material";
 import { styled } from "@mui/system";
-import PropTypes from "prop-types"; // Import PropTypes
+import PropTypes from "prop-types";
 import Image from "next/image";
-
+import ContactForm from "./ContactForm";
 
 const BannerContainer = styled(Box)({
   padding: "40px 20px",
@@ -56,6 +57,10 @@ const ActionButton = styled(Button)({
 });
 
 const SliderFormater = ({ slides, heading, subheading }) => {
+  const [activeFormIndex, setActiveFormIndex] = useState(null); // State to track which form is open
+  const [inert, setInert] = useState(false); // State for inert attribute
+  const buttonRef = useRef(null); // Ref for the button
+
   const settings = {
     dots: true,
     infinite: true,
@@ -75,8 +80,28 @@ const SliderFormater = ({ slides, heading, subheading }) => {
     ],
   };
 
+  const handleFormToggle = (index) => {
+    setActiveFormIndex(index); // Open the form for the selected slide
+    setInert(true); // Set inert to true
+  };
+
+  const handleCloseForm = () => {
+    setActiveFormIndex(null); // Close the form
+    setInert(false); // Reset inert
+    if (buttonRef.current) {
+      buttonRef.current.focus(); // Refocus the button
+    }
+  };
+
+  useEffect(() => {
+    // Handle focus when dialog opens
+    if (activeFormIndex !== null && buttonRef.current) {
+      buttonRef.current.focus();
+    }
+  }, [activeFormIndex]);
+
   return (
-    <BannerContainer id="design-ideas">
+    <BannerContainer id="design-ideas" aria-hidden={inert}>
       <Heading>{heading}</Heading>
       <Typography>{subheading}</Typography>
       <Slider {...settings}>
@@ -90,7 +115,32 @@ const SliderFormater = ({ slides, heading, subheading }) => {
             />
             <SlideTitle>{slide.title}</SlideTitle>
             <SlideDescription>{slide.description}</SlideDescription>
-            <ActionButton variant="contained" onClick={()=>alert("hello")}>GET FREE QUOTE</ActionButton>
+            <ActionButton
+              variant="contained"
+              onClick={() => handleFormToggle(index)}
+              ref={buttonRef} // Assign ref to button
+            >
+              GET FREE QUOTE
+            </ActionButton>
+
+            {/* Show the contact form in a dialog/modal when the button is clicked */}
+            <Dialog
+              open={activeFormIndex === index}
+              onClose={handleCloseForm}
+              fullWidth
+              maxWidth="sm"
+              PaperProps={{
+                style: { 
+                  width: "fit-content", 
+                  height: "fit-content",
+                  padding: "20px"
+                },
+              }}
+            >
+              <DialogContent dividers>
+                <ContactForm isVisible={true} handleClose={handleCloseForm} />
+              </DialogContent>
+            </Dialog>
           </SlideContainer>
         ))}
       </Slider>
