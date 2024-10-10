@@ -5,7 +5,7 @@ import { Box, Typography, Button, Dialog, DialogContent } from "@mui/material";
 import { styled } from "@mui/system";
 import PropTypes from "prop-types";
 import Image from "next/image";
-import ContactForm from "./ContactForm";
+import GetFeeQuote from "./GetFeeQuote";
 
 const BannerContainer = styled(Box)({
   padding: "40px 20px",
@@ -138,7 +138,7 @@ const SliderFormater = ({ slides, heading, subheading }) => {
               }}
             >
               <DialogContent dividers>
-                <ContactForm isVisible={true} handleClose={handleCloseForm} />
+                <GetFeeQuote isVisible={true} handleClose={handleCloseForm} />
               </DialogContent>
             </Dialog>
           </SlideContainer>
