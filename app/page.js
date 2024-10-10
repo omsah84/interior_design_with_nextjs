@@ -15,20 +15,17 @@ import Kitchen from "./components/SliderFormater";
 import DiningRoom from "./components/SliderFormater";
 import OutdoorSpace from "./components/SliderFormater";
 
-
 import { homeofficesliders } from "./data/HomeOffice.js";
 import { livingroomsliders } from "./data/LivingRoom.js";
 import { kitchensliders } from "./data/Kitchen.js";
 import { outdoorspacesliders } from "./data/OutdoorSpace.js";
 import { bedroomsliders } from "./data/BedRoom.js";
 import { diningroomsliders } from "./data/DiningRoom.js";
-import ContactForm from "./components/Form1";
+import PopUpForm from "./components/PopUpForm";
 
 export const runtime = "edge";
 
 function DesignComponent() {
-
-  
   return (
     <>
       <HomeOffice
@@ -78,8 +75,7 @@ export default function Home() {
       {/* <Testimonial /> */}
       {/* <OngoingProjects /> */}
       <InteriorCafeProcess />
-      <ContactForm/>
-      
+      <PopUpForm />
     </>
   );
 }

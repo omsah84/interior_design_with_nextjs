@@ -1,13 +1,18 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --transition-duration: 0.3s; /* Transition duration for smooth effects */
+  --primary-color: #0070f3; /* Example primary color */
+  --secondary-color: #ff4081; /* Example secondary color */
+  --border-radius: 5px; /* General border radius */
+  --transition-duration: 0.3s; /* Smooth transition duration */
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --primary-color: #50a7f3;
+    --secondary-color: #ff79b0;
   }
 }
 
@@ -19,36 +24,72 @@ body {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Roboto', 'Helvetica Neue', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
-  transition: background var(--transition-duration), color var(--transition-duration); /* Smooth transition for background and text color */
+  transition: background var(--transition-duration), color var(--transition-duration); /* Smooth transition */
 }
 
+/* Reset margins and padding */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
+/* Container styles */
 .container {
-  padding: 1em 4em; /* Increased padding for better spacing */
-  width: 100%;
+  padding: 1em 4em;
+  max-width: 1200px; /* Max width for responsiveness */
+  margin: 0 auto;
   position: relative;
   z-index: 2;
-  transition: padding var(--transition-duration); /* Smooth transition for padding */
+  transition: padding var(--transition-duration);
 }
 
-/* Smooth transitions for hover effects */
-button, a {
+/* Headings styles */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--foreground);
+  margin: 0.5em 0;
+  font-weight: bold;
+}
+
+
+/* Button and link hover effects */
+button,
+a {
   transition: background var(--transition-duration), color var(--transition-duration);
+  border-radius: var(--border-radius); /* Rounded corners for buttons and links */
 }
 
-/* Responsive styles */
+button:hover,
+a:hover {
+  background: rgba(255, 0, 0, 0.1); /* Light red background on hover */
+  color: var(--primary-color); /* Change color to primary on hover */
+}
+
+/* Dark mode compatibility */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  button:hover,
+  a:hover {
+    background: rgba(255, 255, 255, 0.1); /* Light background on hover in dark mode */
+  }
+}
+
+/* Responsive adjustments */
 @media only screen and (max-width: 700px) {
   .mobile {
     display: none !important;
+  }
+
+  .container {
+    padding: 1em 2em;
   }
 }
 
@@ -56,16 +97,4 @@ button, a {
   .tablet {
     display: none !important;
   }
-}
-
-/* Example of hover effects for buttons and links */
-button:hover,
-a:hover {
-  background: rgba(255, 0, 0, 0.1); /* Light background on hover */
-  color: var(--foreground); /* Change text color on hover */
-}
-
-/* Smooth scroll for anchor links */
-html {
-  scroll-behavior: smooth;
 }

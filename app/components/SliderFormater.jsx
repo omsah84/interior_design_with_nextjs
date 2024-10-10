@@ -5,6 +5,7 @@ import { styled } from "@mui/system";
 import PropTypes from "prop-types"; // Import PropTypes
 import Image from "next/image";
 
+
 const BannerContainer = styled(Box)({
   padding: "40px 20px",
   textAlign: "center",
@@ -89,7 +90,7 @@ const SliderFormater = ({ slides, heading, subheading }) => {
             />
             <SlideTitle>{slide.title}</SlideTitle>
             <SlideDescription>{slide.description}</SlideDescription>
-            <ActionButton variant="contained">GET FREE QUOTE</ActionButton>
+            <ActionButton variant="contained" onClick={()=>alert("hello")}>GET FREE QUOTE</ActionButton>
           </SlideContainer>
         ))}
       </Slider>
