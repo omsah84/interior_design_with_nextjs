@@ -1,229 +1,220 @@
-"use client";
+'use client'
 import React, { useState, useEffect } from "react";
-import {
-  TextField,
-  Button,
-  Grid,
-  Container,
-  Alert,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  CircularProgress,
-} from "@mui/material";
+import { TextField, Button, Box, Grid, Typography } from '@mui/material';
 
 const ContactForm = () => {
+  const scriptURL =
+    "https://script.google.com/macros/s/AKfycbwWzuMEd4K5dxvjvAUHx58b_AuCn2MqjRGWDMphRij-V_IFGEFINBr_4VEt045pF-f2Jg/exec";
+
   const [formData, setFormData] = useState({
+    email: "",
     name: "",
     mobile: "",
-    place: "",
-    email: "",
   });
 
-  const [errorMessage, setErrorMessage] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [submitted, setSubmitted] = useState(false); // New state to track submission
+  const [errors, setErrors] = useState({
+    email: "",
+    mobile: ""
+  });
 
-  // Replace with your Google Apps Script Web App URL
-  const googleAppsScriptURL =
-    "https://script.google.com/macros/s/AKfycbxRCC6-6otqHuQ2v9n3pm1s4B7TuxWi-DlvdbPXLSpFWuQaIHXhocYGPDxQzalBjs5D8Q/exec";
+  const [isVisible, setIsVisible] = useState(false); // State for form visibility
 
-  // Delay before showing the form initially
+  // Show form after 10 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
-      setLoading(false);
-      setOpen(true);
-    }, 20000);
+      setIsVisible(true);
+    }, 10000); // 10 seconds delay
 
-    return () => clearTimeout(timer);
+    return () => clearTimeout(timer); // Cleanup timer on unmount
   }, []);
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    setErrorMessage("");
-  };
-
+  // Email validation regex
   const validateEmail = (email) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(email);
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
   };
 
+  // Mobile number validation (10 digits)
   const validateMobile = (mobile) => {
-    const regex = /^[0-9]{10}$/;
-    return regex.test(mobile);
+    const mobileRegex = /^[0-9]{10}$/;
+    return mobileRegex.test(mobile);
   };
 
-  const handleSubmit = async (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+
+    // Validate email and mobile inputs on change
+    if (name === "email" && !validateEmail(value)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "Please enter a valid email address.",
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: "",
+      }));
+    }
+
+    if (name === "mobile" && !validateMobile(value)) {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        mobile: "Please enter a valid 10-digit mobile number.",
+      }));
+    } else {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        mobile: "",
+      }));
+    }
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    const { name, mobile, place, email } = formData;
-
-    if (!name || !mobile || !email) {
-      setErrorMessage("Name, mobile, and email are required.");
+    // Final validation before submission
+    if (!validateEmail(formData.email)) {
+      window.alert("Invalid email address.");
       return;
     }
 
-    if (!validateEmail(email)) {
-      setErrorMessage("Please enter a valid email.");
+    if (!validateMobile(formData.mobile)) {
+      window.alert("Invalid mobile number. It should be 10 digits.");
       return;
     }
 
-    if (!validateMobile(mobile)) {
-      setErrorMessage("Please enter a valid 10-digit mobile number.");
-      return;
-    }
+    const form = e.target;
 
-    setSuccessMessage("Form submitted successfully!");
-    setErrorMessage("");
-
-    // Send form data to Google Sheets via Google Apps Script
-    try {
-      const response = await fetch(googleAppsScriptURL, {
-        method: "POST",
-        mode: "no-cors", // Set mode to 'no-cors'
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+    fetch(scriptURL, {
+      method: "POST",
+      body: new FormData(form),
+    })
+      .then((response) => {
+        console.log("Success!", response);
+        // Clear form fields
+        setFormData({
+          email: "",
+          name: "",
+          mobile: "",
+        });
+        // Show success alert
+        window.alert("Form submitted successfully!");
+        // Hide the form after successful submission
+        setIsVisible(false);
+      })
+      .catch((error) => {
+        console.error("Error!", error.message);
+        window.alert("An error occurred while submitting the form.");
       });
-
-      if (!response.ok) {
-        const errorResponse = await response.json(); // Try to get error message from response
-        throw new Error(errorResponse.message || "Network response was not ok");
-      }
-
-      setOpen(false);
-      setSubmitted(true); // Mark as submitted
-      setFormData({ name: "", mobile: "", place: "", email: "" });
-    } catch (error) {
-      setErrorMessage(`Error submitting the form: ${error.message}`);
-    }
   };
 
+  // Handle form cancellation
   const handleCancel = () => {
-    setOpen(false);
-    setTimeout(() => {
-      setOpen(true);
-    }, 5000); // Form reappears after 5 seconds
+    setIsVisible(false);
   };
 
-  // If the form is submitted, don't show it
-  if (submitted) {
-    return (
-      <Container
-        maxWidth="sm"
-        sx={{ textAlign: "center", paddingTop: "100px" }}
+  return isVisible ? (
+    <Box
+      component="form"
+      name="submit-to-google-sheet"
+      onSubmit={handleSubmit}
+      sx={{ 
+        position: 'fixed',  // Position the form fixed
+        top: '50%', // Center the form vertically
+        left: '50%', // Center the form horizontally
+        transform: 'translate(-50%, -50%)',  // Ensure the form is centered
+        width: { xs: '90%', sm: '80%', md: '50%' },  // Responsive width
+        maxWidth: '500px',  // Max width for larger screens
+        backgroundColor: '#f5f5f5', 
+        borderRadius: 2, 
+        boxShadow: 3,
+        padding: { xs: 2, sm: 3 },  // Responsive padding
+        zIndex: 999, // Ensure the popup appears above other elements
+      }}
+    >
+      {/* Title */}
+      <Typography 
+        variant="h4" 
+        component="h1" 
+        align="center" 
+        sx={{ marginBottom: 3 }}
       >
-        <h2>Thank You!</h2>
-        <p>Your response has been recorded.</p>
-      </Container>
-    );
-  }
+        Contact Us
+      </Typography>
 
-  return (
-    <>
-      {loading ? (
-        <Container
-          maxWidth="sm"
-          sx={{
-            textAlign: "center",
-            paddingTop: "80px",
-            paddingBottom: "20px",
-          }}
-        >
-          <CircularProgress />
-          <p>Loading form, please wait...</p>
-        </Container>
-      ) : (
-        <Dialog open={open} onClose={handleCancel} maxWidth="sm" fullWidth>
-          <DialogTitle sx={{ textAlign: "center" }}>Contact Form</DialogTitle>
-          <DialogContent>
-            {errorMessage && (
-              <Alert severity="error" sx={{ marginBottom: 2 }}>
-                {errorMessage}
-              </Alert>
-            )}
-            {successMessage && (
-              <Alert severity="success" sx={{ marginBottom: 2 }}>
-                {successMessage}
-              </Alert>
-            )}
-
-            <form onSubmit={handleSubmit}>
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Name"
-                    variant="outlined"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    size="small"
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Mobile Number"
-                    variant="outlined"
-                    name="mobile"
-                    value={formData.mobile}
-                    onChange={handleChange}
-                    required
-                    inputProps={{ maxLength: 10 }}
-                    size="small"
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Place"
-                    variant="outlined"
-                    name="place"
-                    value={formData.place}
-                    onChange={handleChange}
-                    size="small"
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <TextField
-                    fullWidth
-                    label="Email"
-                    variant="outlined"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    size="small"
-                  />
-                </Grid>
-              </Grid>
-              <DialogActions
-                sx={{ justifyContent: "center", padding: "16px 24px" }}
-              >
-                <Button
-                  onClick={handleCancel}
-                  color="secondary"
-                  variant="outlined"
-                  sx={{ marginRight: 2 }}
-                >
-                  Cancel
-                </Button>
-                <Button type="submit" variant="contained" color="primary">
-                  Submit
-                </Button>
-              </DialogActions>
-            </form>
-          </DialogContent>
-        </Dialog>
-      )}
-    </>
-  );
+      <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <TextField
+            fullWidth
+            label="Email"
+            name="email"
+            type="email"
+            placeholder="Email"
+            required
+            onChange={handleChange}
+            value={formData.email}
+            variant="outlined"
+            error={!!errors.email}  // Shows error state if email is invalid
+            helperText={errors.email}  // Display error message
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            fullWidth
+            label="Name"
+            name="name"
+            type="text"
+            placeholder="Name"
+            onChange={handleChange}
+            value={formData.name}
+            variant="outlined"
+            required
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            fullWidth
+            label="Mobile"
+            name="mobile"
+            type="text"
+            placeholder="Mobile"
+            onChange={handleChange}
+            value={formData.mobile}
+            variant="outlined"
+            required
+            error={!!errors.mobile}  // Shows error state if mobile is invalid
+            helperText={errors.mobile}  // Display error message
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <Button 
+            fullWidth 
+            type="submit" 
+            variant="contained" 
+            color="primary"
+            sx={{ paddingY: 1.5 }} // Make the button taller
+          >
+            Send
+          </Button>
+        </Grid>
+        <Grid item xs={12}>
+          <Button 
+            fullWidth 
+            variant="outlined" 
+            color="secondary" 
+            onClick={handleCancel}  // Hide form on cancel
+            sx={{ paddingY: 1.5 }}
+          >
+            Cancel
+          </Button>
+        </Grid>
+      </Grid>
+    </Box>
+  ) : null; // Hide form when not visible
 };
 
 export default ContactForm;
